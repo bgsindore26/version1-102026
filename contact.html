@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — MyPersonalCreditScore.com</title>
+     <link rel="icon" href="/logos/mpcslogo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0a1a4a;
+      --blue:#0a55ff;
+      --cyan:#12d4ff;
+      --green:#00d95f;
+      --lime:#7dff12;
+      --ink:#0a1a4a;
+      --muted:#5b6b8c;
+      --line:#e6ecf7;
+      --bg:#ffffff;
+      --soft:#f5f8ff;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Nunito',system-ui,sans-serif;
+      color:var(--ink);background:var(--bg);
+      line-height:1.6;-webkit-font-smoothing:antialiased;
+      display:flex;flex-direction:column;min-height:100vh;
+    }
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 1.5rem;width:100%}
+
+    /* ---------- LOGO ---------- */
+    .logo{display:inline-flex;align-items:center;gap:.9rem}
+    .logo svg.gauge{width:64px;height:64px;flex:none;filter:drop-shadow(0 6px 10px rgba(18,212,255,.25))}
+    .wordmark{display:flex;flex-direction:column;line-height:.95;font-weight:900;letter-spacing:-.04em}
+    .wordmark .l1{font-size:1.55rem;color:var(--navy)}
+    .wordmark .l1 b{color:#1f7fd6;font-weight:900}
+    .wordmark .l2{font-size:1.55rem;color:var(--blue)}
+    .wordmark .l3{font-size:.95rem;color:var(--green);align-self:flex-end;letter-spacing:0;margin-top:.15rem}
+    .logo.big svg.gauge{width:84px;height:84px}
+    .logo.big .l1,.logo.big .l2{font-size:2rem}
+
+    /* ---------- HEADER ---------- */
+    header{padding:1.25rem 0;border-bottom:1px solid var(--line);background:rgba(255,255,255,.9);backdrop-filter:blur(10px);position:sticky;top:0;z-index:20}
+
+    /* ---------- PAGE HEADER ---------- */
+    .contact-header{
+      padding:3rem 0 1.5rem;
+      background:
+        radial-gradient(600px 260px at 15% 0%,rgba(18,212,255,.14),transparent 70%),
+        radial-gradient(600px 260px at 85% 0%,rgba(0,217,95,.12),transparent 70%);
+      text-align:center;
+    }
+    .contact-header h1{
+      font-size:clamp(2rem,4.5vw,3rem);
+      font-weight:900;
+      letter-spacing:-.04em;
+      line-height:1.1;
+      color:var(--navy);
+    }
+    .contact-header h1 .grad{
+      background:linear-gradient(90deg,var(--cyan),var(--blue) 45%,var(--green));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .contact-header p{
+      color:var(--muted);
+      font-size:1.1rem;
+      font-weight:600;
+      max-width:620px;
+      margin:1rem auto 0;
+    }
+
+    /* ---------- CONTENT ---------- */
+    .contact-content{
+      padding:2.5rem 0 4rem;
+    }
+    .contact-card{
+      background:#fff;
+      border:1.5px solid var(--line);
+      border-radius:28px;
+      padding:2.8rem 3rem;
+      box-shadow:0 18px 40px -24px rgba(10,85,255,.08);
+      max-width:760px;
+      margin:0 auto;
+    }
+    @media(max-width:600px){
+      .contact-card{padding:1.8rem 1.5rem;border-radius:20px}
+    }
+
+    .contact-card h2{
+      font-size:1.45rem;
+      font-weight:900;
+      letter-spacing:-.02em;
+      color:var(--navy);
+      margin-bottom:.6rem;
+      text-align:center;
+    }
+    .contact-card .sub{
+      text-align:center;
+      color:var(--muted);
+      font-weight:600;
+      font-size:.98rem;
+      margin-bottom:2rem;
+    }
+
+    .email-box{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:.7rem;
+      background:#eaf1ff;
+      border-radius:14px;
+      padding:.9rem 1.4rem;
+      margin-bottom:2rem;
+      flex-wrap:wrap;
+    }
+    .email-box svg{width:22px;height:22px;flex:none}
+    .email-box a{
+      font-weight:800;
+      font-size:1rem;
+      color:var(--blue);
+      word-break:break-all;
+    }
+    .email-box a:hover{color:var(--green);text-decoration:underline}
+
+    /* ---------- FORM ---------- */
+    .form-group{
+      margin-bottom:1.3rem;
+      position:relative;
+    }
+    .form-group label{
+      display:block;
+      font-size:.85rem;
+      font-weight:800;
+      color:var(--navy);
+      margin-bottom:.4rem;
+      letter-spacing:.02em;
+    }
+    .form-group label .req{color:#e5484d}
+    .form-control{
+      width:100%;
+      font-family:'Nunito',system-ui,sans-serif;
+      font-size:.98rem;
+      font-weight:600;
+      color:var(--ink);
+      background:var(--soft);
+      border:1.8px solid var(--line);
+      border-radius:14px;
+      padding:.85rem 1.1rem;
+      transition:border-color .2s,box-shadow .2s,background .2s;
+      outline:none;
+    }
+    .form-control::placeholder{color:#9aa8c4;font-weight:600}
+    .form-control:focus{
+      border-color:var(--cyan);
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(18,212,255,.15);
+    }
+    textarea.form-control{
+      resize:vertical;
+      min-height:130px;
+      line-height:1.5;
+    }
+
+    .btn-submit{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.55rem;
+      width:100%;
+      font-family:'Nunito',system-ui,sans-serif;
+      font-size:1.05rem;
+      font-weight:900;
+      letter-spacing:.01em;
+      color:#fff;
+      background:linear-gradient(135deg,var(--cyan),var(--blue) 60%,var(--green));
+      border:none;
+      border-radius:14px;
+      padding:.95rem 1.5rem;
+      cursor:pointer;
+      transition:transform .15s,box-shadow .2s,opacity .2s;
+      box-shadow:0 12px 24px -12px rgba(10,85,255,.5);
+      margin-top:.4rem;
+    }
+    .btn-submit:hover{transform:translateY(-2px);box-shadow:0 18px 30px -14px rgba(10,85,255,.55)}
+    .btn-submit:active{transform:translateY(0)}
+    .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
+
+    .form-note{
+      margin-top:1.1rem;
+      font-size:.82rem;
+      color:var(--muted);
+      font-weight:600;
+      text-align:center;
+    }
+    .form-note .counter{
+      font-weight:800;
+      color:var(--blue);
+    }
+
+    /* ---------- ALERTS ---------- */
+    .alert{
+      display:none;
+      border-radius:14px;
+      padding:1rem 1.4rem;
+      font-weight:700;
+      font-size:.95rem;
+      margin-bottom:1.4rem;
+      line-height:1.5;
+    }
+    .alert.show{display:block}
+    .alert.success{
+      background:#ecfdf3;
+      border:1.8px solid #b7f0cd;
+      color:#0a7a3d;
+    }
+    .alert.error{
+      background:#fff1f1;
+      border:1.8px solid #ffd0d0;
+      color:#c0282d;
+    }
+    .alert.warning{
+      background:#fffbea;
+      border:1.8px solid #ffe8a3;
+      color:#8a6100;
+    }
+
+    /* success state: hide form */
+    .form-wrap.hide{display:none}
+
+    .success-panel{
+      display:none;
+      text-align:center;
+      padding:1rem 0;
+    }
+    .success-panel.show{display:block}
+    .success-icon{
+      width:84px;height:84px;
+      margin:0 auto 1.4rem;
+      border-radius:50%;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--cyan),var(--green));
+      box-shadow:0 18px 34px -16px rgba(0,217,95,.6);
+      animation:pop .4s cubic-bezier(.2,1.4,.4,1);
+    }
+    @keyframes pop{
+      0%{transform:scale(.5);opacity:0}
+      100%{transform:scale(1);opacity:1}
+    }
+    .success-icon svg{width:42px;height:42px;stroke:#fff}
+    .success-panel h3{
+      font-size:1.5rem;
+      font-weight:900;
+      color:var(--navy);
+      letter-spacing:-.02em;
+      margin-bottom:.6rem;
+    }
+    .success-panel p{
+      color:var(--muted);
+      font-weight:600;
+      font-size:1rem;
+      max-width:420px;
+      margin:0 auto 1.4rem;
+    }
+    .btn-reset{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      font-family:'Nunito',system-ui,sans-serif;
+      font-size:.95rem;
+      font-weight:800;
+      color:var(--blue);
+      background:var(--soft);
+      border:1.8px solid var(--line);
+      border-radius:14px;
+      padding:.75rem 1.6rem;
+      cursor:pointer;
+      transition:all .2s;
+    }
+    .btn-reset:hover{border-color:var(--cyan);color:var(--green);background:#fff}
+
+    /* ---------- FOOTER ---------- */
+    footer{margin-top:auto;background:var(--navy);color:#cfd9f5;padding:3.5rem 0 1.5rem;position:relative}
+    footer::before{
+      content:"";
+      position:absolute;
+      left:0;right:0;top:0;height:5px;
+      background:linear-gradient(90deg,var(--cyan),var(--blue),var(--green));
+    }
+    .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem}
+    footer .wordmark .l1{color:#fff}
+    footer .wordmark .l1 b{color:#5ab8ff}
+    footer .wordmark .l2{color:#4d8dff}
+    .foot-about{margin-top:1rem;font-size:.9rem;max-width:320px;color:#9fb0d9;font-weight:600}
+    .foot-email{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      margin-top:.8rem;
+      font-size:.88rem;
+      font-weight:700;
+      color:#5ab8ff;
+      transition:color .15s;
+    }
+    .foot-email:hover{color:var(--green);text-decoration:underline}
+    .foot-email svg{width:16px;height:16px;flex:none}
+    footer h4{color:#fff;font-size:.95rem;font-weight:800;margin-bottom:1rem;letter-spacing:.02em}
+    footer ul{list-style:none;display:grid;gap:.6rem;padding:0}
+    footer li a{font-size:.92rem;font-weight:600;color:#b7c4e6;transition:color .15s;text-decoration:none}
+    footer li a:hover{color:var(--green);text-decoration:underline}
+    .copy{
+      margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.1);
+      display:flex;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
+      font-size:.82rem;color:#8d9fcb;font-weight:600;
+    }
+
+    @media(max-width:820px){
+      .foot-grid{grid-template-columns:1fr 1fr}
+      .foot-grid>div:first-child{grid-column:1/-1}
+    }
+    @media(max-width:480px){
+      .logo svg.gauge{width:52px;height:52px}
+      .wordmark .l1,.wordmark .l2{font-size:1.25rem}
+      .foot-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Reusable logo mark -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gArc" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#12eaff"/><stop offset="1" stop-color="#1a4bff"/>
+    </linearGradient>
+    <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#00d95f"/><stop offset="1" stop-color="#00f070"/>
+    </linearGradient>
+    <linearGradient id="gNeedle" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#7dff12"/><stop offset="1" stop-color="#14a04a"/>
+    </linearGradient>
+    <symbol id="mark" viewBox="0 0 100 100">
+      <path d="M22 70 A28 28 0 0 1 46 40" fill="none" stroke="#d8dde9" stroke-width="7" stroke-linecap="round"/>
+      <path d="M62 44 A28 28 0 0 1 78 70" fill="none" stroke="#d8dde9" stroke-width="7" stroke-linecap="round"/>
+      <path d="M10 68 A40 40 0 0 1 58 22" fill="none" stroke="url(#gArc)" stroke-width="10" stroke-linecap="round"/>
+      <path d="M68 30 A40 40 0 0 1 90 68" fill="none" stroke="url(#gGreen)" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="63" cy="26" r="7" fill="#7dff12" stroke="#fff" stroke-width="2.5"/>
+      <path d="M33 78 C30 66 36 60 46 54 L60 36 C58 52 52 68 46 75 C42 79 38 78 33 78 Z" fill="url(#gNeedle)"/>
+      <circle cx="40" cy="66" r="7" fill="#0a1a4a"/>
+      <circle cx="40" cy="66" r="3.2" fill="#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ========== HEADER ========== -->
+<header>
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="MyPersonalCreditScore.com home">
+      <svg class="gauge" viewBox="0 0 100 100"><use href="#mark"/></svg>
+      <span class="wordmark">
+        <span class="l1">my<b>personal</b></span>
+        <span class="l2">creditscore</span>
+        <span class="l3">.COM</span>
+      </span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- ========== CONTACT HEADER ========== -->
+  <section class="contact-header">
+    <div class="wrap">
+      <h1>Contact <span class="grad">Us</span></h1>
+      <p>Have a question or need help? Send us a message and we'll get back to you.</p>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT CONTENT ========== -->
+  <section class="contact-content">
+    <div class="wrap">
+      <div class="contact-card">
+
+        <h2>Send a Message</h2>
+        <p class="sub">Fill out the form below and we'll respond as soon as we can.</p>
+
+        <div class="email-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--blue)">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          <a href="mailto:info@mypersonlcreditscore.com">info@mypersonlcreditscore.com</a>
+        </div>
+
+        <!-- Alerts -->
+        <div class="alert success" id="alertSuccess"></div>
+        <div class="alert error" id="alertError"></div>
+        <div class="alert warning" id="alertWarning"></div>
+
+        <!-- Form wrapper -->
+        <div class="form-wrap" id="formWrap">
+          <form id="contactForm" novalidate>
+            <input type="hidden" name="access_key" value="b71b137b-43c9-4714-bbb6-5501667aa6aa">
+            <input type="hidden" name="subject" value="New contact message from MyPersonalCreditScore.com">
+            <input type="hidden" name="from_name" value="MyPersonalCreditScore.com Contact Form">
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="form-group">
+              <label for="cf-name">Full Name <span class="req">*</span></label>
+              <input class="form-control" type="text" id="cf-name" name="name" placeholder="John Doe" required autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="cf-email">Email Address <span class="req">*</span></label>
+              <input class="form-control" type="email" id="cf-email" name="email" placeholder="john@example.com" required autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="cf-phone">Phone Number <span style="color:var(--muted);font-weight:600">(optional)</span></label>
+              <input class="form-control" type="tel" id="cf-phone" name="phone" placeholder="+1 (555) 123-4567" autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+              <label for="cf-message">Your Message <span class="req">*</span></label>
+              <textarea class="form-control" id="cf-message" name="message" placeholder="Tell us how we can help..." required></textarea>
+            </div>
+
+            <button class="btn-submit" type="submit" id="btnSubmit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m22 2-7 20-4-9-9-4Z"></path>
+                <path d="M22 2 11 13"></path>
+              </svg>
+              <span id="btnLabel">Send Message</span>
+            </button>
+
+            <p class="form-note">
+              You can submit this form <span class="counter" id="counterText">5 times</span>. No spam, ever.
+            </p>
+          </form>
+        </div>
+
+        <!-- Success panel -->
+        <div class="success-panel" id="successPanel">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </div>
+          <h3>Thank you!</h3>
+          <p>Your message has been sent successfully. We'll get back to you at the email you provided as soon as possible.</p>
+          <button class="btn-reset" type="button" id="btnReset">Send another message</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#" aria-label="MyPersonalCreditScore.com">
+          <svg class="gauge" viewBox="0 0 100 100"><use href="#mark"/></svg>
+          <span class="wordmark">
+            <span class="l1">my<b>personal</b></span>
+            <span class="l2">creditscore</span>
+            <span class="l3">.COM</span>
+          </span>
+        </a>
+        <p class="foot-about">Your simple hub for trusted credit monitoring, building and protection tools.</p>
+        <a class="foot-email" href="mailto:info@mypersonlcreditscore.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          info@mypersonlcreditscore.com
+        </a>
+      </div>
+
+      <div>
+        <h4>Site map</h4>
+        <ul>
+           <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Partners</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Partners</h4>
+        <ul>
+             <li><a href="https://scorecheck247.o18.link/c?o=21986444&m=20760&a=773872" target="_blank" rel="noopener noreferrer">IdentityIQ</a></li>
+          <li><a href="https://scorecheck247.o18.link/c?o=22013230&m=20760&a=773872" target="_blank" rel="noopener noreferrer">Credit Builder IQ</a></li>
+          <li><a href="https://scorecheck247.o18.link/c?o=21986998&m=20760&a=773872" target="_blank" rel="noopener noreferrer">Kikoff</a></li>
+          <li><a href="https://scorecheck247.o18.link/c?o=22038634&m=20760&a=773872" target="_blank" rel="noopener noreferrer">Sofi Credit Score</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <ul>
+         <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="disclosures.html">Disclosures</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copy">
+      <span>© <span id="yr">2026</span> MyPersonalCreditScore.com. All rights reserved.</span>
+      <span>Not a credit bureau. Partner links may earn us compensation.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =========================================================
+     CONFIG
+     ========================================================= */
+  var MAX_SUBMISSIONS = 5;
+  var STORAGE_KEY     = 'mpcs_contact_submissions';
+  var ACCESS_KEY      = 'b71b137b-43c9-4714-bbb6-5501667aa6aa';
+  var ENDPOINT        = 'https://api.web3forms.com/submit';
+
+  /* =========================================================
+     ELEMENTS
+     ========================================================= */
+  var form          = document.getElementById('contactForm');
+  var formWrap      = document.getElementById('formWrap');
+  var successPanel  = document.getElementById('successPanel');
+  var btnSubmit     = document.getElementById('btnSubmit');
+  var btnLabel      = document.getElementById('btnLabel');
+  var btnReset      = document.getElementById('btnReset');
+  var counterText   = document.getElementById('counterText');
+  var alertSuccess  = document.getElementById('alertSuccess');
+  var alertError    = document.getElementById('alertError');
+  var alertWarning  = document.getElementById('alertWarning');
+
+  /* =========================================================
+     STORAGE HELPERS (with fallback if localStorage unavailable)
+     ========================================================= */
+  var memoryStore = {};
+
+  function storageGet(key) {
+    try {
+      return window.localStorage.getItem(key);
+    } catch (e) {
+      return memoryStore[key] || null;
+    }
+  }
+
+  function storageSet(key, value) {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch (e) {
+      memoryStore[key] = value;
+    }
+  }
+
+  function getSubmissionCount() {
+    var raw = storageGet(STORAGE_KEY);
+    var n = parseInt(raw, 10);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function incrementSubmissionCount() {
+    var next = getSubmissionCount() + 1;
+    storageSet(STORAGE_KEY, String(next));
+    return next;
+  }
+
+  function remainingSubmissions() {
+    return Math.max(0, MAX_SUBMISSIONS - getSubmissionCount());
+  }
+
+  /* =========================================================
+     UI HELPERS
+     ========================================================= */
+  function hideAllAlerts() {
+    alertSuccess.classList.remove('show');
+    alertError.classList.remove('show');
+    alertWarning.classList.remove('show');
+  }
+
+  function showAlert(el, message) {
+    hideAllAlerts();
+    el.textContent = message;
+    el.classList.add('show');
+  }
+
+  function updateCounter() {
+    var left = remainingSubmissions();
+    if (left === 1) {
+      counterText.textContent = '1 time left';
+    } else if (left === 0) {
+      counterText.textContent = '0 times left';
+    } else {
+      counterText.textContent = left + ' times';
+    }
+  }
+
+  function setFormDisabled(disabled) {
+    var fields = form.querySelectorAll('input, textarea, button');
+    for (var i = 0; i < fields.length; i++) {
+      if (fields[i].name === 'access_key' || fields[i].name === 'subject' || fields[i].name === 'from_name' || fields[i].name === 'botcheck') {
+        continue;
+      }
+      fields[i].disabled = disabled;
+    }
+  }
+
+  function showSuccess() {
+    formWrap.classList.add('hide');
+    successPanel.classList.add('show');
+    hideAllAlerts();
+  }
+
+  function showForm() {
+    successPanel.classList.remove('show');
+    formWrap.classList.remove('hide');
+    setFormDisabled(false);
+    btnLabel.textContent = 'Send Message';
+    updateCounter();
+  }
+
+  /* =========================================================
+     INITIAL STATE
+     ========================================================= */
+  function init() {
+    updateCounter();
+
+    var left = remainingSubmissions();
+    if (left <= 0) {
+      setFormDisabled(true);
+      showAlert(alertWarning, 'You have reached the maximum of ' + MAX_SUBMISSIONS + ' submissions from this browser. If you need to contact us, please email info@mypersonlcreditscore.com directly.');
+      return;
+    }
+
+    if (left === 1) {
+      showAlert(alertWarning, 'Please note: you have only 1 submission remaining from this browser.');
+    }
+  }
+
+  /* =========================================================
+     VALIDATION
+     ========================================================= */
+  function validateForm() {
+    var name    = form.querySelector('[name="name"]');
+    var email   = form.querySelector('[name="email"]');
+    var message = form.querySelector('[name="message"]');
+
+    var nameVal    = name.value.trim();
+    var emailVal   = email.value.trim();
+    var messageVal = message.value.trim();
+
+    if (!nameVal) {
+      showAlert(alertError, 'Please enter your name.');
+      name.focus();
+      return false;
+    }
+
+    if (!emailVal) {
+      showAlert(alertError, 'Please enter your email address.');
+      email.focus();
+      return false;
+    }
+
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRe.test(emailVal)) {
+      showAlert(alertError, 'Please enter a valid email address.');
+      email.focus();
+      return false;
+    }
+
+    if (!messageVal) {
+      showAlert(alertError, 'Please enter your message.');
+      message.focus();
+      return false;
+    }
+
+    if (messageVal.length < 5) {
+      showAlert(alertError, 'Your message is a bit short. Please add a little more detail.');
+      message.focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  /* =========================================================
+     SUBMIT HANDLER (AJAX — stays on page, no redirect)
+     ========================================================= */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    hideAllAlerts();
+
+    if (remainingSubmissions() <= 0) {
+      showAlert(alertWarning, 'You have reached the maximum of ' + MAX_SUBMISSIONS + ' submissions. Please email info@mypersonlcreditscore.com directly.');
+      return;
+    }
+
+    if (!validateForm()) {
+      return;
+    }
+
+    // Disable while submitting
+    btnSubmit.disabled = true;
+    btnLabel.textContent = 'Sending...';
+
+    var formData = new FormData(form);
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      body: formData
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return { success: response.ok };
+        });
+      })
+      .then(function (data) {
+        if (data && data.success) {
+          // Count it
+          var count = incrementSubmissionCount();
+          updateCounter();
+
+          // Reset form fields
+          form.reset();
+
+          // Show success panel
+          showSuccess();
+
+          if (count >= MAX_SUBMISSIONS) {
+            // Update success message to reflect limit
+            var p = successPanel.querySelector('p');
+            if (p) {
+              p.textContent = 'Your message has been sent successfully. You have now reached the maximum of ' + MAX_SUBMISSIONS + ' submissions from this browser. If you need to reach us again, please email info@mypersonlcreditscore.com directly.';
+            }
+            // Hide the "send another" button
+            if (btnReset) {
+              btnReset.style.display = 'none';
+            }
+          }
+        } else {
+          var errMsg = (data && data.message) ? data.message : 'Something went wrong while sending your message. Please try again or email info@mypersonlcreditscore.com directly.';
+          showAlert(alertError, errMsg);
+          btnSubmit.disabled = false;
+          btnLabel.textContent = 'Send Message';
+        }
+      })
+      .catch(function () {
+        showAlert(alertError, 'Network error. Please check your connection and try again, or email info@mypersonlcreditscore.com directly.');
+        btnSubmit.disabled = false;
+        btnLabel.textContent = 'Send Message';
+      });
+  });
+
+  /* =========================================================
+     RESET BUTTON (send another message)
+     ========================================================= */
+  if (btnReset) {
+    btnReset.addEventListener('click', function () {
+      hideAllAlerts();
+
+      if (remainingSubmissions() <= 0) {
+        showAlert(alertWarning, 'You have reached the maximum of ' + MAX_SUBMISSIONS + ' submissions from this browser. Please email info@mypersonlcreditscore.com directly.');
+        return;
+      }
+
+      showForm();
+
+      if (remainingSubmissions() === 1) {
+        showAlert(alertWarning, 'Please note: you have only 1 submission remaining from this browser.');
+      }
+    });
+  }
+
+  /* =========================================================
+     START
+     ========================================================= */
+  init();
+
+})();
+</script>
+</body>
+</html>
